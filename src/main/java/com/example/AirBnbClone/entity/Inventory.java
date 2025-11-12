@@ -1,14 +1,12 @@
 package com.example.AirBnbClone.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,13 +14,14 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime date;
+    private LocalDate date;
 
     @Column(nullable = false,columnDefinition = "INTEGER DEFAULT 0")
     private Integer bookedCount;
@@ -38,6 +37,12 @@ public class Inventory {
     private BigDecimal surgeFactor;
 
     private Boolean closed;
+
+    @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price; // basePrice * surgeFactor
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hotel_id",nullable = false)

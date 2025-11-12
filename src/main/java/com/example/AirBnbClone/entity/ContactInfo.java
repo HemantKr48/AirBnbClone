@@ -14,11 +14,11 @@ import lombok.Setter;
 @Embeddable
 public class ContactInfo {
 
-    private String completeAddress;
+    private String address;
 
     private String location;
 
     private String email;
 
-    private String phoneNumber;
+    private String phone;
 }
