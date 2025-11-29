@@ -1,6 +1,5 @@
 package com.example.AirBnbClone.advice;
 
-
 import com.example.AirBnbClone.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
